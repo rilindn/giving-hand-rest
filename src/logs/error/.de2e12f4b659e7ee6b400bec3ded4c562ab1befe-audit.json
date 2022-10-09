@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "F:\\Literatura UBT\\Tema Diplomes\\Projekti\\rest\\src\\logs\\error\\.de2e12f4b659e7ee6b400bec3ded4c562ab1befe-audit.json",
+    "files": [
+        {
+            "date": 1665180187014,
+            "name": "F:\\Literatura UBT\\Tema Diplomes\\Projekti\\rest\\src\\logs\\error\\2022-10-08.log",
+            "hash": "8f1daab0fcb1ad013c073fcd24e3fb96c7e47044415b83a0bb85245762e269c3"
+        },
+        {
+            "date": 1665268255956,
+            "name": "F:\\Literatura UBT\\Tema Diplomes\\Projekti\\rest\\src\\logs\\error\\2022-10-09.log",
+            "hash": "5816583aa9f928a9f233dedf9b318c1196dc30f4019270656b9fc1e4ff2b52f5"
+        }
+    ],
+    "hashType": "sha256"
+}
