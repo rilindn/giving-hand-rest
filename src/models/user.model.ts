@@ -1,11 +1,28 @@
 import { Schema, Document, model } from 'mongoose'
-import { IUser } from '@interfaces/user.interface'
+import bcrypt from 'bcrypt'
+import { IUser } from '../interfaces/user.interface'
 
 const UserSchema = new Schema(
   {
-    name: {
+    firstName: {
       type: String,
       required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      index: true,
+    },
+    password: {
+      type: String,
+      required: true,
+      select: false,
     },
   },
   {
@@ -13,6 +30,12 @@ const UserSchema = new Schema(
     collection: 'users',
   },
 )
+
+UserSchema.pre('save', async function hashAndSave(next) {
+  const hashedPsw = await bcrypt.hash(this.password, 10)
+  this.password = hashedPsw
+  next()
+})
 
 const userModel = model<IUser & Document>('User', UserSchema)
 

@@ -1,9 +1,13 @@
 import createHttpError from 'http-errors'
 import { NextFunction } from 'express'
 import Joi from 'joi'
-import { logger } from '@utils/logger';
+import { logger } from '@utils/logger'
 
-const validator = async (schema: Joi.ObjectSchema, body: object, next: NextFunction) => {
+const validator = async (
+  schema: Joi.ObjectSchema,
+  body: object,
+  next: NextFunction,
+) => {
   const value = await schema.validate(body)
 
   try {

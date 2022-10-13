@@ -1,35 +1,51 @@
-import express, { Application } from 'express';
+import express, { Application } from 'express'
 import cors from 'cors'
-import * as dotenv from 'dotenv'
-import morgan from 'morgan';
-import createHttpError from 'http-errors';
-import { logger, stream } from './utils/logger';
-import initializeMongo from './config/mongodb.config';
-import router from './routes';
-import errorHandler from './middleware/errorHandler';
+import morgan from 'morgan'
+import createHttpError from 'http-errors'
+import passport from 'passport'
+import session from 'express-session'
+import authRoutes from './routes/authRoutes'
+import secureRoutes from './routes/secureRoutes'
+import initializeMongo from './config/mongodb.config'
+import { logger, stream } from './utils/logger'
+import errorHandler from './middleware/errorHandler.middleware'
+import './config/passport.config'
+import { SECRET_SESSION_KEY, PORT, NODE_ENV } from './config/index.config'
 
-dotenv.config();
-const PORT: number = +process.env.PORT! || 3000;
-const ENV: string = process.env.NODE_ENV || 'development';
+const app: Application = express()
 
-const app: Application = express();
+// establish mongo connection
+initializeMongo()
 
-// connect to mongo
-initializeMongo();
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(cors());
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+app.use(cors())
 app.use(morgan('dev', { stream }))
-app.use('/', router);
+
+// passport
+app.use(
+  session({
+    secret: SECRET_SESSION_KEY,
+    resave: false,
+    saveUninitialized: false,
+  }),
+)
+app.use(passport.initialize())
+app.use(passport.session())
+
+// routes
+app.use('/', authRoutes)
+app.use('/', passport.authenticate('jwt', { session: false }), secureRoutes)
+
+// error handling
 app.use(() => createHttpError(404, 'Route not found'))
 app.use(errorHandler)
 
 app.listen(PORT, () => {
-  logger.info('==================================');
-  logger.info(`======= ENV: ${ENV} =========`);
-  logger.info(` 🚀 App listening on the port ${PORT}  `);
-  logger.info('==================================');
-});
+  logger.info('==================================')
+  logger.info(`======= ENV: ${NODE_ENV} =========`)
+  logger.info(` 🚀 App listening on the port ${PORT}  `)
+  logger.info('==================================')
+})
 
-export default app;
+export default app

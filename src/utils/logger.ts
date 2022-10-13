@@ -11,14 +11,12 @@ if (!existsSync(logDir)) {
 }
 
 // Define log format
-const logFormat = winston.format.printf(
-  ({ timestamp, level, message }) => {
-    let colorCode = '\x1b[94m'
-    if (level === 'error') colorCode = '\x1b[31m'
-    if (level === 'warning') colorCode = '\x1b[93m'
-    return `[${timestamp}] ${colorCode} ${level.toUpperCase()}\x1b[0m : ${message}`
-  },
-)
+const logFormat = winston.format.printf(({ timestamp, level, message }) => {
+  let colorCode = '\x1b[94m'
+  if (level === 'error') colorCode = '\x1b[31m'
+  if (level === 'warning') colorCode = '\x1b[93m'
+  return `[${timestamp}] ${colorCode} ${level.toUpperCase()}\x1b[0m : ${message}`
+})
 
 /*
  * Log Level
@@ -58,7 +56,10 @@ const logger = winston.createLogger({
 
 logger.add(
   new winston.transports.Console({
-    format: winston.format.combine(winston.format.splat(), winston.format.colorize()),
+    format: winston.format.combine(
+      winston.format.splat(),
+      winston.format.colorize(),
+    ),
   }),
 )
 
