@@ -1,7 +1,7 @@
 import express from 'express'
-import UserController from '../../controllers/user.controller'
-import AuthController from '../../controllers/auth.controller'
-import { updateUserValidation } from '../../validators/user.validation'
+import UserController from '@controllers/user.controller'
+import AuthController from '@controllers/auth.controller'
+import { updateUserValidation } from '@validators/user.validation'
 
 const UserRouter = express.Router()
 

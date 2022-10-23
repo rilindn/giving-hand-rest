@@ -1,6 +1,6 @@
 import { Schema, Document, model } from 'mongoose'
 import bcrypt from 'bcrypt'
-import { IUser } from '../interfaces/user.interface'
+import { IUser } from '@interfaces/user.interface'
 
 const UserSchema = new Schema(
   {
@@ -23,6 +23,13 @@ const UserSchema = new Schema(
       type: String,
       required: true,
       select: false,
+    },
+    gender: {
+      type: String,
+      required: true,
+    },
+    birthDate: {
+      type: String,
     },
   },
   {

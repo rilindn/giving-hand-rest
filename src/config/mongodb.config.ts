@@ -1,7 +1,7 @@
 import mongoose, { ConnectOptions } from 'mongoose'
 import { logger } from '@utils/logger'
 import createHttpError from 'http-errors'
-import { MONGO_URL } from './index.config'
+import { MONGO_URL } from './env.config'
 
 async function initializeMongo() {
   const mongoUrl: string = MONGO_URL

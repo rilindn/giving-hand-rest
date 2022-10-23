@@ -1,0 +1,17 @@
+import dotenv from 'dotenv'
+
+dotenv.config()
+
+export const {
+  BASE_URL,
+  PORT = 9090,
+  MONGO_URL,
+  SECRET_SESSION_KEY,
+  ACCESS_TOKEN_SECRET,
+  NODE_ENV = 'local',
+  GMAIL_API_CLIENT_ID,
+  GMAIL_API_CLIENT_SECRET,
+  GMAIL_API_REFRESH_TOKEN,
+  GMAIL_EMAIL_USER,
+  RESET_TOKEN_CRON_JOB_SCHEDULE,
+} = process.env

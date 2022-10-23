@@ -1,11 +1,6 @@
-import dotenv from 'dotenv'
+import initializeCronJobs from './cron.config'
+import initializeMongo from './mongodb.config'
+import './passport.config'
 
-dotenv.config()
-
-export const {
-  PORT = 9090,
-  MONGO_URL,
-  SECRET_SESSION_KEY,
-  ACCESS_TOKEN_SECRET,
-  NODE_ENV = 'development',
-} = process.env
+initializeMongo()
+initializeCronJobs()

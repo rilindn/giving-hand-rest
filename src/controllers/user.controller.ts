@@ -14,8 +14,8 @@ async function getAllUsers(req: Request, res: Response, next: NextFunction) {
 async function getUserById(req: Request, res: Response, next: NextFunction) {
   const { id }: IUserGetParams = req.query
   try {
-    const users: IUser[] = await UserService.getUserById(id)
-    return res.send(users)
+    const user: IUser = await UserService.getUserById(id)
+    return res.send(user)
   } catch (error) {
     next(error)
   }
@@ -24,8 +24,8 @@ async function getUserById(req: Request, res: Response, next: NextFunction) {
 async function updateUser(req: Request, res: Response, next: NextFunction) {
   const { id }: IUserGetParams = req.query
   try {
-    const users: IUser[] = await UserService.updateUser(id, req.body)
-    return res.send(users)
+    const user: IUser = await UserService.updateUser(id, req.body)
+    return res.send(user)
   } catch (error) {
     next(error)
   }
@@ -34,8 +34,8 @@ async function updateUser(req: Request, res: Response, next: NextFunction) {
 async function deleteUser(req: Request, res: Response, next: NextFunction) {
   const { id }: IUserGetParams = req.query
   try {
-    const users: IUser[] = await UserService.deleteUser(id)
-    return res.send(users)
+    const user: IUser = await UserService.deleteUser(id)
+    return res.send(user)
   } catch (error) {
     next(error)
   }

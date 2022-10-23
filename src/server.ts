@@ -4,18 +4,17 @@ import morgan from 'morgan'
 import createHttpError from 'http-errors'
 import passport from 'passport'
 import session from 'express-session'
+
 import authRoutes from './routes/authRoutes'
 import secureRoutes from './routes/secureRoutes'
-import initializeMongo from './config/mongodb.config'
 import { logger, stream } from './utils/logger'
 import errorHandler from './middleware/errorHandler.middleware'
-import './config/passport.config'
-import { SECRET_SESSION_KEY, PORT, NODE_ENV } from './config/index.config'
+import { SECRET_SESSION_KEY, PORT, NODE_ENV } from './config/env.config'
+
+// initialize configs
+import './config/index.config'
 
 const app: Application = express()
-
-// establish mongo connection
-initializeMongo()
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -43,7 +42,7 @@ app.use(errorHandler)
 
 app.listen(PORT, () => {
   logger.info('==================================')
-  logger.info(`======= ENV: ${NODE_ENV} =========`)
+  logger.info(`=========== ENV: ${NODE_ENV} ===========`)
   logger.info(` 🚀 App listening on the port ${PORT}  `)
   logger.info('==================================')
 })
