@@ -8,6 +8,7 @@ import {
 const ProductRouter = express.Router()
 
 ProductRouter.get('/', ProductController.getAllProducts)
+ProductRouter.get('/:id', ProductController.getProductById)
 ProductRouter.post(
   '/',
   createProductValidation,

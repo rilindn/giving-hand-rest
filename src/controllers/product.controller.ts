@@ -1,12 +1,22 @@
 import { Request, Response, NextFunction } from 'express'
 
-import { IProduct } from '@interfaces/product.interface'
+import { IProduct, IProductGetParams } from '@interfaces/product.interface'
 import ProductService from '@services/product.service'
 
 async function getAllProducts(req: Request, res: Response, next: NextFunction) {
   try {
     const products: IProduct[] = await ProductService.getProducts()
     return res.send(products)
+  } catch (error) {
+    next(error)
+  }
+}
+
+async function getProductById(req: Request, res: Response, next: NextFunction) {
+  const { id }: IProductGetParams = req.params
+  try {
+    const product: IProduct = await ProductService.getProductById(id)
+    return res.send(product)
   } catch (error) {
     next(error)
   }
@@ -43,6 +53,7 @@ async function deleteProduct(req: Request, res: Response, next: NextFunction) {
 
 export default {
   getAllProducts,
+  getProductById,
   createProduct,
   updateProduct,
   deleteProduct,

@@ -1,4 +1,4 @@
-import { Schema, Document, model } from 'mongoose'
+import mongoose, { Schema, Document, model, ObjectId } from 'mongoose'
 import { IProduct } from '@interfaces/product.interface'
 
 const ImageSchema = new Schema({
@@ -19,7 +19,7 @@ const ProductSchema = new Schema(
       type: [ImageSchema],
     },
     userId: {
-      type: String,
+      type: mongoose.Types.ObjectId,
     },
     categories: {
       type: [String],

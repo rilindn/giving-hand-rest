@@ -1,3 +1,5 @@
+import { IUser } from '@interfaces/user.interface'
+
 interface Images {
   url: string
 }
@@ -8,6 +10,9 @@ export interface IProduct {
   description: string
   images: Images[]
   userId: string
+  location: string
+  categories: string[]
+  user?: IUser[]
 }
 
 export interface IProductPayload {
@@ -15,4 +20,8 @@ export interface IProductPayload {
   description: string
   images: Images[]
   userId: string
+}
+
+export interface IProductGetParams {
+  id?: string
 }
