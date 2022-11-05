@@ -9,6 +9,7 @@ const ProductRouter = express.Router()
 
 ProductRouter.get('/', ProductController.getAllProducts)
 ProductRouter.get('/:id', ProductController.getProductById)
+ProductRouter.get('/my-products/:id', ProductController.getMyProducts)
 ProductRouter.post(
   '/',
   createProductValidation,

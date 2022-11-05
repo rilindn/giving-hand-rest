@@ -14,9 +14,7 @@ import { ACCESS_TOKEN_SECRET, BASE_URL, NODE_ENV } from '@/config/env.config'
 
 function signTokenPayload(user: IUser) {
   const body = { userId: user._id }
-  const token = jsonwebtoken.sign({ user: body }, ACCESS_TOKEN_SECRET || '', {
-    expiresIn: '1d',
-  })
+  const token = jsonwebtoken.sign({ user: body }, ACCESS_TOKEN_SECRET || '', {})
   const data = _.omit(user, ['password'])
 
   return { token, user: data }

@@ -13,6 +13,17 @@ async function getProducts() {
   }
 }
 
+async function getMyProducts(id: string) {
+  try {
+    const products = await Product.find({
+      userId: new mongoose.Types.ObjectId(id),
+    }).sort({ createdAt: 'descending' })
+    return products
+  } catch (error) {
+    throw new HttpException(error)
+  }
+}
+
 async function getProductById(id: string) {
   try {
     const product: IProduct[] = await Product.aggregate([
@@ -71,6 +82,7 @@ async function deleteProduct(id: string) {
 
 export default {
   getProducts,
+  getMyProducts,
   getProductById,
   createProduct,
   updateProduct,

@@ -22,6 +22,16 @@ async function getProductById(req: Request, res: Response, next: NextFunction) {
   }
 }
 
+async function getMyProducts(req: Request, res: Response, next: NextFunction) {
+  const { id }: IProductGetParams = req.params
+  try {
+    const products: IProduct[] = await ProductService.getMyProducts(id)
+    return res.send(products)
+  } catch (error) {
+    next(error)
+  }
+}
+
 async function createProduct(req: Request, res: Response, next: NextFunction) {
   try {
     const product: IProduct = await ProductService.createProduct(req.body)
@@ -53,6 +63,7 @@ async function deleteProduct(req: Request, res: Response, next: NextFunction) {
 
 export default {
   getAllProducts,
+  getMyProducts,
   getProductById,
   createProduct,
   updateProduct,
