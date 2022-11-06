@@ -15,7 +15,11 @@ ProductRouter.post(
   createProductValidation,
   ProductController.createProduct,
 )
-ProductRouter.put('/', updateProductValidation, ProductController.updateProduct)
+ProductRouter.put(
+  '/:id',
+  updateProductValidation,
+  ProductController.updateProduct,
+)
 ProductRouter.delete('/:id', ProductController.deleteProduct)
 
 export default ProductRouter

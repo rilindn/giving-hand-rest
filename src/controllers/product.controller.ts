@@ -1,11 +1,19 @@
 import { Request, Response, NextFunction } from 'express'
 
-import { IProduct, IProductGetParams } from '@interfaces/product.interface'
+import {
+  IAllProductQuery,
+  IProduct,
+  IProductGetParams,
+} from '@interfaces/product.interface'
 import ProductService from '@services/product.service'
 
 async function getAllProducts(req: Request, res: Response, next: NextFunction) {
+  const { search = '', categories = '' }: IAllProductQuery = req.query
   try {
-    const products: IProduct[] = await ProductService.getProducts()
+    const products: IProduct[] = await ProductService.getProducts(
+      search,
+      categories,
+    )
     return res.send(products)
   } catch (error) {
     next(error)
@@ -42,7 +50,7 @@ async function createProduct(req: Request, res: Response, next: NextFunction) {
 }
 
 async function updateProduct(req: Request, res: Response, next: NextFunction) {
-  const { id }: { id?: string } = req.query
+  const { id }: { id?: string } = req.params
   try {
     const product: IProduct = await ProductService.updateProduct(id, req.body)
     return res.send(product)
@@ -52,7 +60,7 @@ async function updateProduct(req: Request, res: Response, next: NextFunction) {
 }
 
 async function deleteProduct(req: Request, res: Response, next: NextFunction) {
-  const { id }: { id?: string } = req.query
+  const { id }: { id?: string } = req.params
   try {
     const product: IProduct = await ProductService.deleteProduct(id)
     return res.send(product)

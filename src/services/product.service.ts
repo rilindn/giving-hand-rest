@@ -4,9 +4,30 @@ import { IProduct, IProductPayload } from '@interfaces/product.interface'
 import mongoose from 'mongoose'
 import _ from 'lodash'
 
-async function getProducts() {
+async function getProducts(search: string, categories: string) {
+  const categoriesArr = categories ? categories.split(',') : []
+
+  const searchQuery = search && [
+    { title: { $regex: search, $options: 'i' } },
+    { description: { $regex: search, $options: 'i' } },
+  ]
+
+  const categoriesQuery = !!categoriesArr?.length && [
+    {
+      categories: { $in: categoriesArr },
+    },
+  ]
+
   try {
-    const products = await Product.find().sort({ createdAt: 'descending' })
+    const products = await Product.aggregate([
+      {
+        $match: {
+          ...((searchQuery || categoriesQuery) && {
+            $or: [...(searchQuery || []), ...(categoriesQuery || [])],
+          }),
+        },
+      },
+    ]).sort({ createdAt: 'descending' })
     return products
   } catch (error) {
     throw new HttpException(error)
@@ -15,9 +36,19 @@ async function getProducts() {
 
 async function getMyProducts(id: string) {
   try {
-    const products = await Product.find({
-      userId: new mongoose.Types.ObjectId(id),
-    }).sort({ createdAt: 'descending' })
+    const products: IProduct[] = await Product.aggregate([
+      {
+        $match: { userId: new mongoose.Types.ObjectId(id) },
+      },
+      {
+        $lookup: {
+          from: 'productRequests',
+          localField: '_id',
+          foreignField: 'productId',
+          as: 'requests',
+        },
+      },
+    ]).sort({ createdAt: 'descending' })
     return products
   } catch (error) {
     throw new HttpException(error)

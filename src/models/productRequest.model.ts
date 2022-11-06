@@ -12,6 +12,7 @@ const ProductRequestSchema = new Schema(
     },
     productId: {
       type: mongoose.Types.ObjectId,
+      index: true,
     },
   },
   {
