@@ -5,11 +5,13 @@ export interface IProductRequest {
   description: string
   userId: ObjectId
   productId: ObjectId
+  status: string
 }
 
 export interface IProductRequestPayload {
   description: string
   userId: ObjectId
+  status: string
   productId: ObjectId
 }
 

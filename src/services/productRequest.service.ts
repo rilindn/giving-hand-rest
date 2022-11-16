@@ -68,7 +68,7 @@ async function updateProductRequest(
       },
     )
     if (!productRequest) {
-      throw new HttpException('ProductRequest not found', 404)
+      throw new HttpException('Product request not found', 404)
     }
     return productRequest
   } catch (error) {

@@ -7,6 +7,10 @@ const ProductRequestSchema = new Schema(
       type: String,
       required: true,
     },
+    status: {
+      type: String,
+      default: 'Pending',
+    },
     userId: {
       type: mongoose.Types.ObjectId,
     },

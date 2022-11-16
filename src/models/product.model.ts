@@ -5,6 +5,12 @@ const ImageSchema = new Schema({
   url: { type: String },
 })
 
+const LocationSchema = new Schema({
+  lng: { type: Number },
+  lat: { type: Number },
+  address: { type: String },
+})
+
 const ProductSchema = new Schema(
   {
     title: {
@@ -26,7 +32,7 @@ const ProductSchema = new Schema(
       type: [String],
     },
     location: {
-      type: String,
+      type: LocationSchema,
     },
   },
   {

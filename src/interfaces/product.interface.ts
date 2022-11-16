@@ -4,13 +4,18 @@ interface Images {
   url: string
 }
 
+interface Location {
+  lat: number
+  lng: number
+}
+
 export interface IProduct {
   _id: string
   title: string
   description: string
   images: Images[]
   userId: string
-  location: string
+  location: Location
   categories: string[]
   user?: IUser[]
 }

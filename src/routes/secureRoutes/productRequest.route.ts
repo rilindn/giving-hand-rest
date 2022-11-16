@@ -15,7 +15,7 @@ ProductRequestRouter.post(
   ProductRequestController.createProductRequest,
 )
 ProductRequestRouter.put(
-  '/',
+  '/:id',
   updateProductRequestValidation,
   ProductRequestController.updateProductRequest,
 )

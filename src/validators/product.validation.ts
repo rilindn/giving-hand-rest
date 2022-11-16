@@ -13,7 +13,11 @@ const registerSchema = Joi.object({
     )
     .label('Images'),
   categories: Joi.array().items(Joi.string().required()).label('Categories'),
-  location: Joi.string().required().label('Location'),
+  location: Joi.object({
+    lat: Joi.number().required(),
+    lng: Joi.number().required(),
+    address: Joi.string().required(),
+  }).label('Location'),
   userId: Joi.string().required().label('User ID'),
 })
 
@@ -29,7 +33,11 @@ const updateSchema = Joi.object({
     )
     .label('Images'),
   categories: Joi.array().items(Joi.string().required()).label('Categories'),
-  location: Joi.string().label('Location'),
+  location: Joi.object({
+    lat: Joi.number().required(),
+    lng: Joi.number().required(),
+    address: Joi.string().required(),
+  }).label('Location'),
   userId: Joi.string().label('User ID'),
 })
 

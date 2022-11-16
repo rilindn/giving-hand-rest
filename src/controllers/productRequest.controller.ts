@@ -57,7 +57,7 @@ async function updateProductRequest(
   res: Response,
   next: NextFunction,
 ) {
-  const { id }: { id?: string } = req.query
+  const { id }: { id?: string } = req.params
   try {
     const productRequest: IProductRequest =
       await ProductRequestService.updateProductRequest(id, req.body)

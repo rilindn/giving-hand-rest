@@ -27,6 +27,14 @@ async function getProducts(search: string, categories: string) {
           }),
         },
       },
+      {
+        $lookup: {
+          from: 'productRequests',
+          localField: '_id',
+          foreignField: 'productId',
+          as: 'requests',
+        },
+      },
     ]).sort({ createdAt: 'descending' })
     return products
   } catch (error) {
@@ -67,6 +75,31 @@ async function getProductById(id: string) {
           localField: 'userId',
           foreignField: '_id',
           as: 'user',
+        },
+      },
+      {
+        $lookup: {
+          from: 'productRequests',
+          let: { id: '$_id' },
+          pipeline: [
+            { $match: { $expr: { $eq: ['$productId', '$$id'] } } },
+            {
+              $lookup: {
+                from: 'users',
+                let: { userId: '$userId' },
+                pipeline: [
+                  {
+                    $match: { $expr: { $eq: ['$_id', '$$userId'] } },
+                  },
+                ],
+                as: 'requester',
+              },
+            },
+            {
+              $unwind: '$requester',
+            },
+          ],
+          as: 'requests',
         },
       },
     ])
