@@ -5,7 +5,7 @@ import validator from '@middleware/validator.middleware'
 const registerSchema = Joi.object({
   description: Joi.string().required().label('Description'),
   userId: Joi.string().required().label('User ID'),
-  status: Joi.string().required().label('Status'),
+  status: Joi.string().label('Status'),
   productId: Joi.string().required().label('Product ID'),
 })
 

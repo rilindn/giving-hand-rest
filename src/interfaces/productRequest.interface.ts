@@ -5,13 +5,13 @@ export interface IProductRequest {
   description: string
   userId: ObjectId
   productId: ObjectId
-  status: string
+  status: 'Pending' | 'Accepted' | 'Rejected'
 }
 
 export interface IProductRequestPayload {
   description: string
   userId: ObjectId
-  status: string
+  status?: 'Pending' | 'Accepted' | 'Rejected'
   productId: ObjectId
 }
 

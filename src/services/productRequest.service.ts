@@ -3,10 +3,13 @@ import _ from 'lodash'
 
 import HttpException from '@utils/HttpException'
 import ProductRequest from '@models/productRequest.model'
+import NotificationService from '@services/notification.service'
+import ProductService from '@services/product.service'
 import {
   IProductRequest,
   IProductRequestPayload,
 } from '@interfaces/productRequest.interface'
+import { INotificationPayload } from '@/interfaces/notification.interface'
 
 async function getProductRequests() {
   try {
@@ -48,6 +51,18 @@ async function createProductRequest(payload: IProductRequestPayload) {
     const productRequest = new ProductRequest({ ...payload })
     await productRequest.save()
 
+    if (productRequest) {
+      const productId = productRequest.productId.toString()
+      const product = await ProductService.getProductById(productId)
+
+      const notificationPayload: INotificationPayload = {
+        type: 'product_requested',
+        productId,
+        senderId: productRequest.userId.toString(),
+        receiverId: product.userId,
+      }
+      await NotificationService.createProduct(notificationPayload)
+    }
     return productRequest
   } catch (error) {
     throw new HttpException(error)
@@ -70,6 +85,20 @@ async function updateProductRequest(
     if (!productRequest) {
       throw new HttpException('Product request not found', 404)
     }
+    const productId = productRequest.productId.toString()
+    const isRequestAccepted = productRequest.status === 'Accepted'
+    const product = await ProductService.getProductById(productId)
+
+    const notificationPayload: INotificationPayload = {
+      type: isRequestAccepted
+        ? 'product_request_accepted'
+        : 'product_request_rejected',
+      productId,
+      receiverId: productRequest.userId.toString(),
+      senderId: product.userId,
+    }
+    await NotificationService.createProduct(notificationPayload)
+
     return productRequest
   } catch (error) {
     throw new HttpException(error)
@@ -88,10 +117,23 @@ async function deleteProductRequest(id: string) {
   }
 }
 
+async function deleteProductRequests(productId: string) {
+  try {
+    const productRequests = await ProductRequest.deleteMany({
+      productId: new mongoose.Types.ObjectId(productId),
+    })
+
+    return productRequests
+  } catch (error) {
+    throw new HttpException(error)
+  }
+}
+
 export default {
   getProductRequests,
   getProductRequestById,
   createProductRequest,
   updateProductRequest,
   deleteProductRequest,
+  deleteProductRequests,
 }
