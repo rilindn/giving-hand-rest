@@ -1,17 +1,25 @@
 import HttpException from '@utils/HttpException'
 import Product from '@models/product.model'
-import { IProduct, IProductPayload } from '@interfaces/product.interface'
+import {
+  IAllProductQuery,
+  IProduct,
+  IProductPayload,
+} from '@interfaces/product.interface'
 import mongoose from 'mongoose'
 import _ from 'lodash'
+import ProductRequestService from '@services/productRequest.service'
 
-async function getProducts(search: string, categories: string) {
+async function getProducts({
+  search,
+  categories,
+  limit,
+  offset,
+}: IAllProductQuery) {
   const categoriesArr = categories ? categories.split(',') : []
-
   const searchQuery = search && [
     { title: { $regex: search, $options: 'i' } },
     { description: { $regex: search, $options: 'i' } },
   ]
-
   const categoriesQuery = !!categoriesArr?.length && [
     {
       categories: { $in: categoriesArr },
@@ -35,6 +43,8 @@ async function getProducts(search: string, categories: string) {
           as: 'requests',
         },
       },
+      { $limit: +limit + +offset },
+      { $skip: +offset },
     ]).sort({ createdAt: 'descending' })
     return products
   } catch (error) {
@@ -102,6 +112,11 @@ async function getProductById(id: string) {
           as: 'requests',
         },
       },
+      {
+        $project: {
+          'user.password': 0,
+        },
+      },
     ])
     if (!product) throw new HttpException('Product not found', 404)
     return _.first(product)
@@ -138,6 +153,9 @@ async function deleteProduct(id: string) {
   try {
     const product = await Product.findByIdAndDelete(id)
     if (!product) throw new HttpException('Product not found', 404)
+    const productRequests = await ProductRequestService.deleteProductRequests(
+      id,
+    )
     return product
   } catch (error) {
     throw new HttpException(error)

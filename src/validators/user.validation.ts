@@ -16,7 +16,8 @@ const updateSchema = Joi.object({
   firstName: Joi.string().min(2).max(30).label('Firstname'),
   lastName: Joi.string().min(2).max(30).label('Lastname'),
   email: Joi.string().email().min(5).max(30).label('Email'),
-  password: Joi.string().alphanum().min(7).max(30).label('Password'),
+  gender: Joi.string().required().label('Gender'),
+  birthDate: Joi.string().optional().allow(null).allow('').label('Birthdate'),
 })
 
 const resetPasswordSchema = Joi.object({

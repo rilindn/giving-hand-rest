@@ -33,4 +33,6 @@ export interface IProductGetParams {
 export interface IAllProductQuery {
   search?: string
   categories?: string
+  limit?: number
+  offset?: number
 }

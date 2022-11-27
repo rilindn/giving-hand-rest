@@ -9,7 +9,7 @@ UserRouter.get('/loggedUser', AuthController.loggedUser)
 
 UserRouter.get('/', UserController.getAllUsers)
 UserRouter.get('/:id', UserController.getUserById)
-UserRouter.put('/', updateUserValidation, UserController.updateUser)
+UserRouter.put('/:id', updateUserValidation, UserController.updateUser)
 UserRouter.delete('/:id', UserController.deleteUser)
 
 export default UserRouter

@@ -8,12 +8,19 @@ import {
 import ProductService from '@services/product.service'
 
 async function getAllProducts(req: Request, res: Response, next: NextFunction) {
-  const { search = '', categories = '' }: IAllProductQuery = req.query
+  const {
+    search = '',
+    categories = '',
+    limit = 12,
+    offset = 0,
+  }: IAllProductQuery = req.query
   try {
-    const products: IProduct[] = await ProductService.getProducts(
+    const products: IProduct[] = await ProductService.getProducts({
       search,
       categories,
-    )
+      limit,
+      offset,
+    })
     return res.send(products)
   } catch (error) {
     next(error)
