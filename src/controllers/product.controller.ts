@@ -13,6 +13,7 @@ async function getAllProducts(req: Request, res: Response, next: NextFunction) {
     categories = '',
     limit = 12,
     offset = 0,
+    excludeIds = '',
   }: IAllProductQuery = req.query
   try {
     const products: IProduct[] = await ProductService.getProducts({
@@ -20,6 +21,7 @@ async function getAllProducts(req: Request, res: Response, next: NextFunction) {
       categories,
       limit,
       offset,
+      excludeIds,
     })
     return res.send(products)
   } catch (error) {

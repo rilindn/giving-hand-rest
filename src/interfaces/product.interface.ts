@@ -35,4 +35,5 @@ export interface IAllProductQuery {
   categories?: string
   limit?: number
   offset?: number
+  excludeIds?: string
 }

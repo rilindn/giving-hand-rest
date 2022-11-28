@@ -14,6 +14,7 @@ async function getProducts({
   categories,
   limit,
   offset,
+  excludeIds = '',
 }: IAllProductQuery) {
   const categoriesArr = categories ? categories.split(',') : []
   const searchQuery = search && [
@@ -25,6 +26,9 @@ async function getProducts({
       categories: { $in: categoriesArr },
     },
   ]
+  const excludeIdsQuery =
+    excludeIds &&
+    excludeIds.split(',').map((id) => new mongoose.Types.ObjectId(id))
 
   try {
     const products = await Product.aggregate([
@@ -32,6 +36,9 @@ async function getProducts({
         $match: {
           ...((searchQuery || categoriesQuery) && {
             $or: [...(searchQuery || []), ...(categoriesQuery || [])],
+          }),
+          ...(excludeIdsQuery?.length && {
+            userId: { $nin: excludeIdsQuery },
           }),
         },
       },
