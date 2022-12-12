@@ -36,11 +36,66 @@ async function getProductRequestById(id: string) {
           as: 'user',
         },
       },
+      {
+        $unwind: '$user',
+      },
     ])
     if (!productRequest) {
       throw new HttpException('ProductRequest not found', 404)
     }
     return _.first(productRequest)
+  } catch (error) {
+    throw new HttpException(error)
+  }
+}
+
+async function getMyRequests(id: string) {
+  try {
+    const products: IProductRequest[] = await ProductRequest.aggregate([
+      {
+        $match: { userId: new mongoose.Types.ObjectId(id) },
+      },
+      {
+        $lookup: {
+          from: 'products',
+          let: { id: '$productId' },
+          pipeline: [
+            { $match: { $expr: { $eq: ['$_id', '$$id'] } } },
+            {
+              $lookup: {
+                from: 'users',
+                let: { userId: '$userId' },
+                pipeline: [
+                  {
+                    $match: { $expr: { $eq: ['$_id', '$$userId'] } },
+                  },
+                ],
+                as: 'user',
+              },
+            },
+            {
+              $unwind: '$user',
+            },
+          ],
+          as: 'product',
+        },
+      },
+      {
+        $unwind: '$product',
+      },
+      {
+        $lookup: {
+          from: 'users',
+          localField: 'userId',
+          foreignField: '_id',
+          as: 'user',
+        },
+      },
+      {
+        $unwind: '$user',
+      },
+    ]).sort({ createdAt: 'descending' })
+    return products
   } catch (error) {
     throw new HttpException(error)
   }
@@ -132,6 +187,7 @@ async function deleteProductRequests(productId: string) {
 export default {
   getProductRequests,
   getProductRequestById,
+  getMyRequests,
   createProductRequest,
   updateProductRequest,
   deleteProductRequest,

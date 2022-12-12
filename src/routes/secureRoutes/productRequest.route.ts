@@ -8,6 +8,10 @@ import {
 const ProductRequestRouter = express.Router()
 
 ProductRequestRouter.get('/', ProductRequestController.getAllProductRequests)
+ProductRequestRouter.get(
+  '/my-requests/:id',
+  ProductRequestController.getMyRequests,
+)
 ProductRequestRouter.get('/:id', ProductRequestController.getProductRequestById)
 ProductRequestRouter.post(
   '/',

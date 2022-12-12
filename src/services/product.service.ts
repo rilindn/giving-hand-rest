@@ -95,6 +95,9 @@ async function getProductById(id: string) {
         },
       },
       {
+        $unwind: '$user',
+      },
+      {
         $lookup: {
           from: 'productRequests',
           let: { id: '$_id' },

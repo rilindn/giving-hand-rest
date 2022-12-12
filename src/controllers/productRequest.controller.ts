@@ -21,6 +21,17 @@ async function getAllProductRequests(
   }
 }
 
+async function getMyRequests(req: Request, res: Response, next: NextFunction) {
+  const { id }: IProductRequestGetParams = req.params
+  try {
+    const products: IProductRequest[] =
+      await ProductRequestService.getMyRequests(id)
+    return res.send(products)
+  } catch (error) {
+    next(error)
+  }
+}
+
 async function getProductRequestById(
   req: Request,
   res: Response,
@@ -86,6 +97,7 @@ async function deleteProductRequest(
 
 export default {
   getAllProductRequests,
+  getMyRequests,
   getProductRequestById,
   createProductRequest,
   updateProductRequest,
