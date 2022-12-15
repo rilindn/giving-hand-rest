@@ -116,7 +116,8 @@ async function createProductRequest(payload: IProductRequestPayload) {
         senderId: productRequest.userId.toString(),
         receiverId: product.userId,
       }
-      await NotificationService.createProduct(notificationPayload)
+
+      await NotificationService.newNotification(notificationPayload)
     }
     return productRequest
   } catch (error) {
@@ -152,7 +153,7 @@ async function updateProductRequest(
       receiverId: productRequest.userId.toString(),
       senderId: product.userId,
     }
-    await NotificationService.createProduct(notificationPayload)
+    await NotificationService.newNotification(notificationPayload)
 
     return productRequest
   } catch (error) {

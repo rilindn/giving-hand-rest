@@ -4,11 +4,13 @@ import morgan from 'morgan'
 import createHttpError from 'http-errors'
 import passport from 'passport'
 import session from 'express-session'
+import { Server } from 'socket.io'
 
 import authRoutes from './routes/authRoutes'
 import secureRoutes from './routes/secureRoutes'
 import { logger, stream } from './utils/logger'
 import errorHandler from './middleware/errorHandler.middleware'
+import socketsService from './services/sockets.service'
 import { SECRET_SESSION_KEY, PORT, NODE_ENV } from './config/env.config'
 
 // initialize configs
@@ -40,11 +42,19 @@ app.use('/', passport.authenticate('jwt', { session: false }), secureRoutes)
 app.use(() => createHttpError(404, 'Route not found'))
 app.use(errorHandler)
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   logger.info('==================================')
   logger.info(`=========== ENV: ${NODE_ENV} ===========`)
   logger.info(` 🚀 App listening on the port ${PORT}  `)
   logger.info('==================================')
 })
+
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+  },
+})
+
+io.on('connection', socketsService)
 
 export default app

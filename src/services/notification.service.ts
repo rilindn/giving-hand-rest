@@ -43,7 +43,7 @@ async function getNotifications(receiverId: string) {
   }
 }
 
-async function createProduct(payload: INotificationPayload) {
+async function newNotification(payload: INotificationPayload) {
   try {
     const notification = new Notification({ ...payload })
     await notification.save()
@@ -69,6 +69,6 @@ async function readAllNotifications(id: string) {
 
 export default {
   getNotifications,
-  createProduct,
+  newNotification,
   readAllNotifications,
 }
