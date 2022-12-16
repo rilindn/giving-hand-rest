@@ -30,6 +30,11 @@ export interface IProductPayload {
 export interface IProductGetParams {
   id?: string
 }
+
+export interface IProductQueryParams {
+  search?: string
+  categories?: string
+}
 export interface IAllProductQuery {
   search?: string
   categories?: string

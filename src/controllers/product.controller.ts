@@ -4,6 +4,7 @@ import {
   IAllProductQuery,
   IProduct,
   IProductGetParams,
+  IProductQueryParams,
 } from '@interfaces/product.interface'
 import ProductService from '@services/product.service'
 
@@ -41,8 +42,14 @@ async function getProductById(req: Request, res: Response, next: NextFunction) {
 
 async function getMyProducts(req: Request, res: Response, next: NextFunction) {
   const { id }: IProductGetParams = req.params
+  const { search, categories }: IProductQueryParams = req.query
+
   try {
-    const products: IProduct[] = await ProductService.getMyProducts(id)
+    const products: IProduct[] = await ProductService.getMyProducts(
+      id,
+      search,
+      categories,
+    )
     return res.send(products)
   } catch (error) {
     next(error)

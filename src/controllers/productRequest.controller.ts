@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from 'express'
 import {
   IProductRequest,
   IProductRequestGetParams,
+  IProductRequestQueryParams,
 } from '@interfaces/productRequest.interface'
 import ProductRequestService from '@services/productRequest.service'
 
@@ -23,9 +24,11 @@ async function getAllProductRequests(
 
 async function getMyRequests(req: Request, res: Response, next: NextFunction) {
   const { id }: IProductRequestGetParams = req.params
+  const { search, status }: IProductRequestQueryParams = req.query
+
   try {
     const products: IProductRequest[] =
-      await ProductRequestService.getMyRequests(id)
+      await ProductRequestService.getMyRequests(id, search, status)
     return res.send(products)
   } catch (error) {
     next(error)

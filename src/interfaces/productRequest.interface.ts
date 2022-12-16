@@ -18,3 +18,8 @@ export interface IProductRequestPayload {
 export interface IProductRequestGetParams {
   id?: string
 }
+
+export interface IProductRequestQueryParams {
+  search?: string
+  status?: string
+}

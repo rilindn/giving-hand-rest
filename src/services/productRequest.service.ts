@@ -49,52 +49,77 @@ async function getProductRequestById(id: string) {
   }
 }
 
-async function getMyRequests(id: string) {
-  try {
-    const products: IProductRequest[] = await ProductRequest.aggregate([
-      {
-        $match: { userId: new mongoose.Types.ObjectId(id) },
+async function getMyRequests(id: string, search: string, status: string) {
+  const query = [
+    {
+      $match: {
+        userId: new mongoose.Types.ObjectId(id),
+        ...(status && status !== 'All' && { status }),
       },
-      {
-        $lookup: {
-          from: 'products',
-          let: { id: '$productId' },
-          pipeline: [
-            { $match: { $expr: { $eq: ['$_id', '$$id'] } } },
-            {
-              $lookup: {
-                from: 'users',
-                let: { userId: '$userId' },
-                pipeline: [
-                  {
-                    $match: { $expr: { $eq: ['$_id', '$$userId'] } },
+    },
+    {
+      $lookup: {
+        from: 'products',
+        let: { id: '$productId' },
+        pipeline: [
+          {
+            $match: {
+              $expr: { $eq: ['$_id', '$$id'] },
+            },
+          },
+          {
+            $lookup: {
+              from: 'users',
+              let: { userId: '$userId' },
+              pipeline: [
+                {
+                  $match: {
+                    $expr: {
+                      $eq: ['$_id', '$$userId'],
+                    },
                   },
-                ],
-                as: 'user',
-              },
+                },
+              ],
+              as: 'user',
             },
-            {
-              $unwind: '$user',
-            },
+          },
+          {
+            $unwind: '$user',
+          },
+        ],
+        as: 'product',
+      },
+    },
+    {
+      $unwind: '$product',
+    },
+    {
+      $lookup: {
+        from: 'users',
+        localField: 'userId',
+        foreignField: '_id',
+        as: 'user',
+      },
+    },
+    {
+      $unwind: '$user',
+    },
+    {
+      $match: {
+        ...(search && {
+          $or: [
+            { description: { $regex: search, $options: 'i' } },
+            { 'product.title': { $regex: search, $options: 'i' } },
+            { 'product.description': { $regex: search, $options: 'i' } },
           ],
-          as: 'product',
-        },
+        }),
       },
-      {
-        $unwind: '$product',
-      },
-      {
-        $lookup: {
-          from: 'users',
-          localField: 'userId',
-          foreignField: '_id',
-          as: 'user',
-        },
-      },
-      {
-        $unwind: '$user',
-      },
-    ]).sort({ createdAt: 'descending' })
+    },
+  ]
+  try {
+    const products: IProductRequest[] = await ProductRequest.aggregate(
+      query,
+    ).sort({ createdAt: 'descending' })
     return products
   } catch (error) {
     throw new HttpException(error)

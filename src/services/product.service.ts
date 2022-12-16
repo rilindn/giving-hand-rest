@@ -59,11 +59,21 @@ async function getProducts({
   }
 }
 
-async function getMyProducts(id: string) {
+async function getMyProducts(id: string, search: string, categories: string) {
   try {
     const products: IProduct[] = await Product.aggregate([
       {
-        $match: { userId: new mongoose.Types.ObjectId(id) },
+        $match: {
+          userId: new mongoose.Types.ObjectId(id),
+          ...(search && {
+            $or: [
+              { title: { $regex: search, $options: 'i' } },
+              { description: { $regex: search, $options: 'i' } },
+              { 'location.address': { $regex: search, $options: 'i' } },
+            ],
+          }),
+          ...(categories && categories !== 'all' && { categories }),
+        },
       },
       {
         $lookup: {
