@@ -21,11 +21,14 @@ async function getNotifications(
   }
 }
 
-async function createProduct(req: Request, res: Response, next: NextFunction) {
+async function newNotification(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
   try {
-    const notification: INotification = await NotificationService.createProduct(
-      req.body,
-    )
+    const notification: INotification =
+      await NotificationService.newNotification(req.body)
     return res.send(notification)
   } catch (error) {
     next(error)
@@ -48,6 +51,6 @@ async function readAllNotifications(
 
 export default {
   getNotifications,
-  createProduct,
+  newNotification,
   readAllNotifications,
 }
