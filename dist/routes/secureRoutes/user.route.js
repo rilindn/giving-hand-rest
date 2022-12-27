@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const express_1 = tslib_1.__importDefault(require("express"));
-const user_controller_1 = tslib_1.__importDefault(require("@controllers/user.controller"));
-const auth_controller_1 = tslib_1.__importDefault(require("@controllers/auth.controller"));
-const user_validation_1 = require("@validators/user.validation");
+const user_controller_1 = tslib_1.__importDefault(require("../../src/controllers/user.controller"));
+const auth_controller_1 = tslib_1.__importDefault(require("../../src/controllers/auth.controller"));
+const user_validation_1 = require("../../src/validators/user.validation");
 const UserRouter = express_1.default.Router();
 UserRouter.get('/loggedUser', auth_controller_1.default.loggedUser);
 UserRouter.get('/', user_controller_1.default.getAllUsers);

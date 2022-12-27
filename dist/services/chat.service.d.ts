@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { IChat, IChatPayload, IMessagePayload } from '@interfaces/chat.interface';
+import { IChat, IChatPayload, IMessagePayload } from '../src/interfaces/chat.interface';
 declare function readAllMessages(chatId: string, receiverId: string): Promise<IChat & mongoose.Document<any, any, any> & {
     _id: mongoose.Types.ObjectId;
 }>;

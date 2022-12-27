@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const user_model_1 = tslib_1.__importDefault(require("@models/user.model"));
-const HttpException_1 = tslib_1.__importDefault(require("@utils/HttpException"));
+const user_model_1 = tslib_1.__importDefault(require("../src/models/user.model"));
+const HttpException_1 = tslib_1.__importDefault(require("../src/utils/HttpException"));
 function getUsers() {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
         try {

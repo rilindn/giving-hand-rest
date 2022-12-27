@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const product_service_1 = tslib_1.__importDefault(require("@services/product.service"));
+const product_service_1 = tslib_1.__importDefault(require("../src/services/product.service"));
 function getAllProducts(req, res, next) {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
         const { search = '', categories = '', limit = 12, offset = 0, excludeIds = '', } = req.query;

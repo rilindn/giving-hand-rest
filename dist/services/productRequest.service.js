@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const mongoose_1 = tslib_1.__importDefault(require("mongoose"));
 const lodash_1 = tslib_1.__importDefault(require("lodash"));
-const HttpException_1 = tslib_1.__importDefault(require("@utils/HttpException"));
-const productRequest_model_1 = tslib_1.__importDefault(require("@models/productRequest.model"));
-const notification_service_1 = tslib_1.__importDefault(require("@services/notification.service"));
-const product_service_1 = tslib_1.__importDefault(require("@services/product.service"));
+const HttpException_1 = tslib_1.__importDefault(require("../src/utils/HttpException"));
+const productRequest_model_1 = tslib_1.__importDefault(require("../src/models/productRequest.model"));
+const notification_service_1 = tslib_1.__importDefault(require("../src/services/notification.service"));
+const product_service_1 = tslib_1.__importDefault(require("../src/services/product.service"));
 function getProductRequests() {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
         try {

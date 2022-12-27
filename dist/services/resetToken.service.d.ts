@@ -23,12 +23,12 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
-import { IResetTokenPayload, IResetTokenSearch } from '@interfaces/resetToken.interface';
-declare function findToken(params: IResetTokenSearch): Promise<import("@interfaces/resetToken.interface").IResetToken & import("mongoose").Document<any, any, any> & {
+import { IResetTokenPayload, IResetTokenSearch } from '../src/interfaces/resetToken.interface';
+declare function findToken(params: IResetTokenSearch): Promise<import("../src/interfaces/resetToken.interface").IResetToken & import("mongoose").Document<any, any, any> & {
     _id: import("mongoose").Types.ObjectId;
 }>;
 declare function deleteInvalidResetToken(email?: string): Promise<import("mongodb").DeleteResult>;
-declare function newResetToken(payload: IResetTokenPayload): Promise<import("@interfaces/resetToken.interface").IResetToken & import("mongoose").Document<any, any, any> & {
+declare function newResetToken(payload: IResetTokenPayload): Promise<import("../src/interfaces/resetToken.interface").IResetToken & import("mongoose").Document<any, any, any> & {
     _id: import("mongoose").Types.ObjectId;
 }>;
 declare const _default: {

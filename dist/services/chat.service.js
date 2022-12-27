@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const mongoose_1 = tslib_1.__importDefault(require("mongoose"));
 const lodash_1 = tslib_1.__importDefault(require("lodash"));
-const HttpException_1 = tslib_1.__importDefault(require("@utils/HttpException"));
-const chat_model_1 = tslib_1.__importDefault(require("@models/chat.model"));
+const HttpException_1 = tslib_1.__importDefault(require("../src/utils/HttpException"));
+const chat_model_1 = tslib_1.__importDefault(require("../src/models/chat.model"));
 const getMyChats = ({ id, search }) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     try {
         const chats = yield chat_model_1.default.find({

@@ -23,7 +23,7 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
-import { IUser, IUserRegister, IUserSearch } from '@interfaces/user.interface';
+import { IUser, IUserRegister, IUserSearch } from '../src/interfaces/user.interface';
 declare function getUsers(): Promise<(IUser & import("mongoose").Document<any, any, any> & {
     _id: import("mongoose").Types.ObjectId;
 })[]>;

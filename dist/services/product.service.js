@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const HttpException_1 = tslib_1.__importDefault(require("@utils/HttpException"));
-const product_model_1 = tslib_1.__importDefault(require("@models/product.model"));
+const HttpException_1 = tslib_1.__importDefault(require("../src/utils/HttpException"));
+const product_model_1 = tslib_1.__importDefault(require("../src/models/product.model"));
 const mongoose_1 = tslib_1.__importDefault(require("mongoose"));
 const lodash_1 = tslib_1.__importDefault(require("lodash"));
-const productRequest_service_1 = tslib_1.__importDefault(require("@services/productRequest.service"));
+const productRequest_service_1 = tslib_1.__importDefault(require("../src/services/productRequest.service"));
 function getProducts({ search, categories, limit, offset, excludeIds = '', }) {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
         const categoriesArr = categories ? categories.split(',') : [];

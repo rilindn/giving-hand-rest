@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const HttpException_1 = tslib_1.__importDefault(require("@utils/HttpException"));
-const notification_model_1 = tslib_1.__importDefault(require("@models/notification.model"));
+const HttpException_1 = tslib_1.__importDefault(require("../src/utils/HttpException"));
+const notification_model_1 = tslib_1.__importDefault(require("../src/models/notification.model"));
 const mongoose_1 = tslib_1.__importDefault(require("mongoose"));
 function getNotifications(receiverId) {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {

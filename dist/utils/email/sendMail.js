@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const nodemailer_express_handlebars_1 = tslib_1.__importDefault(require("nodemailer-express-handlebars"));
-const env_config_1 = require("@/config/env.config");
+const env_config_1 = require("../../src/config/env.config");
 const mailTransporter_1 = tslib_1.__importDefault(require("./mailTransporter"));
 const constructTransporter = (user, magicLink) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     const subject = 'Reset password';

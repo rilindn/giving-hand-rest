@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const productRequest_service_1 = tslib_1.__importDefault(require("@services/productRequest.service"));
+const productRequest_service_1 = tslib_1.__importDefault(require("../src/services/productRequest.service"));
 function getAllProductRequests(req, res, next) {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
         try {

@@ -1,4 +1,4 @@
-import { IUser } from '@interfaces/user.interface';
+import { IUser } from '../src/interfaces/user.interface';
 export interface IMessage {
     [x: string]: any;
     senderId: string;

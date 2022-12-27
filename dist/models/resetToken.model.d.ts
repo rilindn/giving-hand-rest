@@ -23,6 +23,6 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from 'mongoose';
-import { IResetToken } from '@interfaces/resetToken.interface';
+import { IResetToken } from '../src/interfaces/resetToken.interface';
 declare const ResetTokenModel: import("mongoose").Model<IResetToken & Document<any, any, any>, {}, {}, {}, any>;
 export default ResetTokenModel;

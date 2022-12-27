@@ -1,4 +1,4 @@
-import { IAllProductQuery, IProduct, IProductPayload } from '@interfaces/product.interface';
+import { IAllProductQuery, IProduct, IProductPayload } from '../src/interfaces/product.interface';
 import mongoose from 'mongoose';
 declare function getProducts({ search, categories, limit, offset, excludeIds, }: IAllProductQuery): Promise<any[]>;
 declare function getMyProducts(id: string, search: string, categories: string): Promise<IProduct[]>;
