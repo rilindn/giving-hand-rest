@@ -15,7 +15,8 @@ const validator = async (
       next(createHttpError(422, value.error.details[0].message))
     } else next()
   } catch (error) {
-    logger.error(error)
+    console.log({ error })
+    // logger.error(error)
   }
 }
 

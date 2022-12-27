@@ -6,9 +6,9 @@ import WinstonDaily from 'winston-daily-rotate-file'
 // logs dir
 const logDir: string = join(__dirname, '../logs')
 
-if (!existsSync(logDir)) {
-  mkdirSync(logDir)
-}
+// if (!existsSync(logDir)) {
+//   mkdirSync(logDir)
+// }
 
 // Define log format
 const logFormat = winston.format.printf(({ timestamp, level, message }) => {
