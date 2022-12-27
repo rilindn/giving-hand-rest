@@ -4,7 +4,7 @@ import winston from 'winston'
 import WinstonDaily from 'winston-daily-rotate-file'
 
 // logs dir
-const logDir: string = join(__dirname, '../logs')
+const logDir: string = join(__dirname, '../tmp/logs')
 
 // if (!existsSync(logDir)) {
 //   mkdirSync(logDir)
