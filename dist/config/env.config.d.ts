@@ -1,0 +1,1 @@
+export declare const BASE_URL: string, PORT: string | number, MONGO_URL: string, SECRET_SESSION_KEY: string, ACCESS_TOKEN_SECRET: string, NODE_ENV: string, GMAIL_API_CLIENT_ID: string, GMAIL_API_CLIENT_SECRET: string, GMAIL_API_REFRESH_TOKEN: string, GMAIL_EMAIL_USER: string, RESET_TOKEN_CRON_JOB_SCHEDULE: string;
