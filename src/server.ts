@@ -18,6 +18,11 @@ import './config/index.config'
 
 const app: Application = express()
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+  next()
+})
+
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
