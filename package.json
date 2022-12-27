@@ -6,17 +6,9 @@
   "scripts": {
     "start": "tsc && node -r ts-node/register/transpile-only -r tsconfig-paths/register dist/server.js",
     "watch": "nodemon",
-    "build": "rimraf dist && tsc",
-    "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist",
     "lint": "eslint . --ext .ts",
     "prepare": "husky install"
   },
-  "pre-commit": [
-    "ts.check",
-    "build",
-    "add-build"
-  ],
   "author": "Rilind Nuha",
   "license": "ISC",
   "devDependencies": {
