@@ -6,10 +6,17 @@
   "scripts": {
     "start": "tsc && node -r ts-node/register/transpile-only -r tsconfig-paths/register dist/server.js",
     "watch": "nodemon",
-    "build": "tsc",
+    "build": "rimraf dist && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist",
     "lint": "eslint . --ext .ts",
     "prepare": "husky install"
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
   "author": "Rilind Nuha",
   "license": "ISC",
   "devDependencies": {
@@ -59,6 +66,8 @@
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^3.0.2",
     "socket.io": "^4.5.4",
     "ts-node": "^10.3.0",
     "tsconfig-paths": "^4.1.0",
