@@ -6,6 +6,7 @@
   "scripts": {
     "start": "tsc && node -r ts-node/register/transpile-only -r tsconfig-paths/register dist/server.js",
     "watch": "nodemon",
+    "build": "tsc",
     "lint": "eslint . --ext .ts",
     "prepare": "husky install"
   },
