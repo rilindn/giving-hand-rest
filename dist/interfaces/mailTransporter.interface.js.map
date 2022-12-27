@@ -1,1 +1,10 @@
-{"version":3,"file":"mailTransporter.interface.js","sourceRoot":"","sources":["../../src/interfaces/mailTransporter.interface.ts"],"names":[],"mappings":""}
+{
+  "version": 3,
+  "file": "mailTransporter.interface.js",
+  "sourceRoot": "",
+  "sources": [
+    "../../interfaces/mailTransporter.interface.ts"
+  ],
+  "names": [],
+  "mappings": ""
+}

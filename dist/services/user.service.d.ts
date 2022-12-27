@@ -23,31 +23,52 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
-import { IUser, IUserRegister, IUserSearch } from '../src/interfaces/user.interface';
-declare function getUsers(): Promise<(IUser & import("mongoose").Document<any, any, any> & {
-    _id: import("mongoose").Types.ObjectId;
-})[]>;
-declare function getUserById(id: string): Promise<IUser & import("mongoose").Document<any, any, any> & {
-    _id: import("mongoose").Types.ObjectId;
-}>;
-declare function findUser(params: IUserSearch): Promise<IUser & import("mongoose").Document<any, any, any> & {
-    _id: import("mongoose").Types.ObjectId;
-}>;
-declare function registerUser(payload: IUserRegister): Promise<IUser & import("mongoose").Document<any, any, any> & {
-    _id: import("mongoose").Types.ObjectId;
-}>;
-declare function updateUser(id: string, payload: IUser): Promise<IUser & import("mongoose").Document<any, any, any> & {
-    _id: import("mongoose").Types.ObjectId;
-}>;
-declare function deleteUser(id: string): Promise<IUser & import("mongoose").Document<any, any, any> & {
-    _id: import("mongoose").Types.ObjectId;
-}>;
+import { IUser, IUserRegister, IUserSearch } from '../interfaces/user.interface'
+declare function getUsers(): Promise<
+  (IUser &
+    import('mongoose').Document<any, any, any> & {
+      _id: import('mongoose').Types.ObjectId
+    })[]
+>
+declare function getUserById(id: string): Promise<
+  IUser &
+    import('mongoose').Document<any, any, any> & {
+      _id: import('mongoose').Types.ObjectId
+    }
+>
+declare function findUser(params: IUserSearch): Promise<
+  IUser &
+    import('mongoose').Document<any, any, any> & {
+      _id: import('mongoose').Types.ObjectId
+    }
+>
+declare function registerUser(payload: IUserRegister): Promise<
+  IUser &
+    import('mongoose').Document<any, any, any> & {
+      _id: import('mongoose').Types.ObjectId
+    }
+>
+declare function updateUser(
+  id: string,
+  payload: IUser,
+): Promise<
+  IUser &
+    import('mongoose').Document<any, any, any> & {
+      _id: import('mongoose').Types.ObjectId
+    }
+>
+declare function deleteUser(id: string): Promise<
+  IUser &
+    import('mongoose').Document<any, any, any> & {
+      _id: import('mongoose').Types.ObjectId
+    }
+>
 declare const _default: {
-    getUsers: typeof getUsers;
-    getUserById: typeof getUserById;
-    findUser: typeof findUser;
-    updateUser: typeof updateUser;
-    deleteUser: typeof deleteUser;
-    registerUser: typeof registerUser;
-};
-export default _default;
+  getUsers: typeof getUsers
+  getUserById: typeof getUserById
+  findUser: typeof findUser
+  updateUser: typeof updateUser
+  deleteUser: typeof deleteUser
+  registerUser: typeof registerUser
+}
+export default _default
