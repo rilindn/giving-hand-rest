@@ -19,20 +19,69 @@ import './config/index.config'
 const app: Application = express()
 
 // app.use((req, res, next) => {
+//   res.set('Access-Control-Allow-Origin', 'http://localhost:3000')
+//   res.set('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT')
+//   res.set(
+//     'Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+//   )
+//   next()
+//   // console.log('first', res)
+// })
+// app.use((req, res, next) => {
 //   res.header('Access-Control-Allow-Origin', '*')
+//   res.header(
+//     'Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+//   )
+//   if (req.method === 'OPTIONS') {
+//     res.header('Access-Control-Allow-Methods', 'POST, PUT, PATCH, GET, DELETE')
+//     return res.status(200).json({})
+//   }
 //   next()
 // })
 
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+// =========
+const whitelist = ['http://localhost:3000', 'http://example2.com']
+
+// ✅ Enable pre-flight requests
+app.options('*', cors())
+
 const corsOptions = {
-  origin: '*',
-  credentials: true, // access-control-allow-credentials:true
-  optionSuccessStatus: 200,
+  origin: (origin, callback) => {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
 }
 
 app.use(cors(corsOptions))
-// app.use(morgan('dev', { stream }))
+
+app.use(express.urlencoded({ extended: true }))
+
+app.use(express.json())
+// const corsOptions = {
+//   origin: 'http://localhost:3000',
+//   credentials: true, // access-control-allow-credentials:true
+//   optionSuccessStatus: 200,
+// }
+// app.use(cors(corsOptions))
+// const whitelist = ['http://localhost:3000']
+// const corsOptions = {
+//   origin(origin, callback) {
+//     if (!origin || whitelist.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   },
+//   credentials: true,
+// }
+// app.use(cors(corsOptions))
+
+app.use(morgan('dev', { stream }))
 
 // passport
 app.use(
