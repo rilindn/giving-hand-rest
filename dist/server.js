@@ -77,7 +77,7 @@ const io = new socket_io_1.Server(server, {
   cors: {
     origin: '*',
   },
-  transports: ['websocket', 'polling'],
+  transports: ['websocket'],
 })
 io.on('connection', sockets_service_1.default)
 exports.default = app
