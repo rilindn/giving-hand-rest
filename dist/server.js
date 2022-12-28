@@ -16,13 +16,18 @@ const env_config_1 = require("./config/env.config");
 // initialize configs
 require("./config/index.config");
 const app = (0, express_1.default)();
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-});
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*')
+//   next()
+// })
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.json());
-app.use((0, cors_1.default)());
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200,
+};
+app.use((0, cors_1.default)(corsOptions));
 // app.use(morgan('dev', { stream }))
 // passport
 app.use((0, express_session_1.default)({
