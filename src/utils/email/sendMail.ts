@@ -1,3 +1,4 @@
+import path from 'path'
 import hbs from 'nodemailer-express-handlebars'
 import { IUser } from '@interfaces/user.interface'
 import {
@@ -17,11 +18,11 @@ const constructTransporter: (
   const options = {
     viewEngine: {
       extname: '.hbs',
-      layoutsDir: 'src/utils/email/template/',
+      layoutsDir: path.resolve('./src/utils/email/template/'),
       defaultLayout: 'resetPassword',
-      partialsDir: 'src/utils/email/template/',
+      partialsDir: path.resolve('./src/utils/email/template/'),
     },
-    viewPath: 'src/utils/email/template/',
+    viewPath: path.resolve('./src/utils/email/template/'),
     extName: '.hbs',
   }
   const mailOptions: MailOptions = {
