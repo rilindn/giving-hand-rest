@@ -1,9 +1,9 @@
 import express from 'express'
-import ProductRequestController from '@controllers/productRequest.controller'
+import ProductRequestController from '../../controllers/productRequest.controller'
 import {
   createProductRequestValidation,
   updateProductRequestValidation,
-} from '@validators/productRequest.validation'
+} from '../../validators/productRequest.validation'
 
 const ProductRequestRouter = express.Router()
 

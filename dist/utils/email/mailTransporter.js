@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const nodemailer_1 = tslib_1.__importDefault(require("nodemailer"));
 const googleapis_1 = require("googleapis");
-const env_config_1 = require("@/config/env.config");
+const env_config_1 = require("../../config/env.config");
 const { OAuth2 } = googleapis_1.google.auth;
 const createTransporter = () => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     const oauth2Client = new OAuth2(env_config_1.GMAIL_API_CLIENT_ID, env_config_1.GMAIL_API_CLIENT_SECRET, 'https://developers.google.com/oauthplayground');

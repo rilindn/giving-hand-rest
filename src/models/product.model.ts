@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document, model, ObjectId } from 'mongoose'
-import { IProduct } from '@interfaces/product.interface'
+import { IProduct } from '../interfaces/product.interface'
 
 const ImageSchema = new Schema({
   url: { type: String },

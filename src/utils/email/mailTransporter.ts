@@ -6,7 +6,7 @@ import {
   GMAIL_API_CLIENT_SECRET,
   GMAIL_API_REFRESH_TOKEN,
   GMAIL_EMAIL_USER,
-} from '@/config/env.config'
+} from '../../config/env.config'
 
 const { OAuth2 } = google.auth
 

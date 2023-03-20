@@ -3,8 +3,8 @@ import express from 'express'
 import {
   createChatValidation,
   newMessageValidation,
-} from '@validators/chat.validation'
-import ChatController from '@controllers/chat.controller'
+} from '../../validators/chat.validation'
+import ChatController from '../../controllers/chat.controller'
 
 const ChatRouter = express.Router()
 

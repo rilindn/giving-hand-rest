@@ -1,13 +1,13 @@
 import passport from 'passport'
 import { Request, Response, NextFunction } from 'express'
-import { IUser, IUserSearch } from '@interfaces/user.interface'
-import UserService from '@services/user.service'
-import AuthService from '@services/auth.service'
-import HttpException from '@utils/HttpException'
-import ResetTokenService from '@services/resetToken.service'
-import { GmailTransporter } from '@interfaces/mailTransporter.interface'
-import constructEmailTransporter from '@utils/email/sendMail'
-import { AuthRequest } from '@/@types/index'
+import { IUser, IUserSearch } from '../interfaces/user.interface'
+import UserService from '../services/user.service'
+import AuthService from '../services/auth.service'
+import HttpException from '../utils/HttpException'
+import ResetTokenService from '../services/resetToken.service'
+import { GmailTransporter } from '../interfaces/mailTransporter.interface'
+import constructEmailTransporter from '../utils/email/sendMail'
+import { AuthRequest } from '../@types/index'
 
 async function login(req: Request, res: Response, next: NextFunction) {
   passport.authenticate('local', async (err: HttpException, user: IUser) => {

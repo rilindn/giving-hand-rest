@@ -23,6 +23,6 @@
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose/types/inferschematype" />
 import { Document } from 'mongoose';
-import { IUser } from '@interfaces/user.interface';
+import { IUser } from '../interfaces/user.interface';
 declare const userModel: import("mongoose").Model<IUser & Document<any, any, any>, {}, {}, {}, any>;
 export default userModel;

@@ -1,7 +1,7 @@
 import createHttpError from 'http-errors'
 import { NextFunction } from 'express'
 import Joi from 'joi'
-import { logger } from '@utils/logger'
+import { logger } from '../utils/logger'
 
 const validator = async (
   schema: Joi.ObjectSchema,

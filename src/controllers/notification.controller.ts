@@ -3,8 +3,8 @@ import { Request, Response, NextFunction } from 'express'
 import {
   INotification,
   INotificationGetParams,
-} from '@interfaces/notification.interface'
-import NotificationService from '@services/notification.service'
+} from '../interfaces/notification.interface'
+import NotificationService from '../services/notification.service'
 
 async function getNotifications(
   req: Request,

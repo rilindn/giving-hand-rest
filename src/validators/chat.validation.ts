@@ -1,6 +1,6 @@
 import Joi from 'joi'
 import { RequestHandler } from 'express'
-import validator from '@middleware/validator.middleware'
+import validator from '../middleware/validator.middleware'
 
 const registerSchema = Joi.object({
   firstUserId: Joi.string().required().label('First user ID'),

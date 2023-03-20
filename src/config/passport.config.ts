@@ -2,8 +2,8 @@ import passport from 'passport'
 import passportLocal from 'passport-local'
 import bcrypt from 'bcrypt'
 import passportJwt, { VerifiedCallback } from 'passport-jwt'
-import { IUser } from '@interfaces/user.interface'
-import User from '@models/user.model'
+import { IUser } from '../interfaces/user.interface'
+import User from '../models/user.model'
 import { ACCESS_TOKEN_SECRET } from './env.config'
 
 const LocalStrategy = passportLocal.Strategy

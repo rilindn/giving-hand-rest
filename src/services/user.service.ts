@@ -1,6 +1,6 @@
-import User from '@models/user.model'
-import { IUser, IUserRegister, IUserSearch } from '@interfaces/user.interface'
-import HttpException from '@utils/HttpException'
+import User from '../models/user.model'
+import { IUser, IUserRegister, IUserSearch } from '../interfaces/user.interface'
+import HttpException from '../utils/HttpException'
 
 async function getUsers() {
   try {

@@ -4,8 +4,8 @@ import {
   IProductRequest,
   IProductRequestGetParams,
   IProductRequestQueryParams,
-} from '@interfaces/productRequest.interface'
-import ProductRequestService from '@services/productRequest.service'
+} from '../interfaces/productRequest.interface'
+import ProductRequestService from '../services/productRequest.service'
 
 async function getAllProductRequests(
   req: Request,

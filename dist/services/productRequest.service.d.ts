@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { IProductRequest, IProductRequestPayload } from '@interfaces/productRequest.interface';
+import { IProductRequest, IProductRequestPayload } from '../interfaces/productRequest.interface';
 declare function getProductRequests(): Promise<(IProductRequest & mongoose.Document<any, any, any> & {
     _id: mongoose.Types.ObjectId;
 })[]>;

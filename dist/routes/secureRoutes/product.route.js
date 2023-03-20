@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const express_1 = tslib_1.__importDefault(require("express"));
-const product_controller_1 = tslib_1.__importDefault(require("@controllers/product.controller"));
-const product_validation_1 = require("@validators/product.validation");
+const product_controller_1 = tslib_1.__importDefault(require("../../controllers/product.controller"));
+const product_validation_1 = require("../../validators/product.validation");
 const ProductRouter = express_1.default.Router();
 ProductRouter.get('/', product_controller_1.default.getAllProducts);
 ProductRouter.get('/:id', product_controller_1.default.getProductById);

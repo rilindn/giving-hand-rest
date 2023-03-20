@@ -1,15 +1,16 @@
 import mongoose from 'mongoose'
 import _ from 'lodash'
 
-import HttpException from '@utils/HttpException'
-import ProductRequest from '@models/productRequest.model'
-import NotificationService from '@services/notification.service'
-import ProductService from '@services/product.service'
+import HttpException from '../utils/HttpException'
+import ProductRequest from '../models/productRequest.model'
+import NotificationService from './notification.service'
+// eslint-disable-next-line import/no-cycle
+import ProductService from './product.service'
 import {
   IProductRequest,
   IProductRequestPayload,
-} from '@interfaces/productRequest.interface'
-import { INotificationPayload } from '@/interfaces/notification.interface'
+} from '../interfaces/productRequest.interface'
+import { INotificationPayload } from '../interfaces/notification.interface'
 
 async function getProductRequests() {
   try {

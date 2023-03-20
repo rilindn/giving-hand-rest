@@ -1,14 +1,14 @@
 import mongoose from 'mongoose'
 import _ from 'lodash'
 
-import HttpException from '@utils/HttpException'
+import HttpException from '../utils/HttpException'
 import {
   IChat,
   IChatPayload,
   IMessage,
   IMessagePayload,
-} from '@interfaces/chat.interface'
-import Chat from '@models/chat.model'
+} from '../interfaces/chat.interface'
+import Chat from '../models/chat.model'
 
 const getMyChats = async ({ id, search }) => {
   try {

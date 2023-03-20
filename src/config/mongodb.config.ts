@@ -1,6 +1,6 @@
 import mongoose, { ConnectOptions } from 'mongoose'
-import { logger } from '@utils/logger'
 import createHttpError from 'http-errors'
+import { logger } from '../utils/logger'
 import { MONGO_URL } from './env.config'
 
 async function initializeMongo() {

@@ -1,7 +1,7 @@
 import { Socket } from 'socket.io'
-import { INotification } from '@interfaces/notification.interface'
-import { IChat } from '@interfaces/chat.interface'
-import ChatService from '@services/chat.service'
+import { INotification } from '../interfaces/notification.interface'
+import { IChat } from '../interfaces/chat.interface'
+import ChatService from './chat.service'
 import NotificationService from './notification.service'
 
 async function notificationsHandler(socket: Socket) {

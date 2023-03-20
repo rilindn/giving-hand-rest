@@ -1,8 +1,8 @@
 import createHttpError from 'http-errors'
 import cron from 'node-cron'
 import os from 'os'
-import { logger } from '@/utils/logger'
-import ResetTokenService from '@/services/resetToken.service'
+import { logger } from '../utils/logger'
+import ResetTokenService from '../services/resetToken.service'
 import { RESET_TOKEN_CRON_JOB_SCHEDULE } from './env.config'
 
 async function initializeCronJobs() {

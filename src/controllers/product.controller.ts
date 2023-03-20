@@ -5,8 +5,8 @@ import {
   IProduct,
   IProductGetParams,
   IProductQueryParams,
-} from '@interfaces/product.interface'
-import ProductService from '@services/product.service'
+} from '../interfaces/product.interface'
+import ProductService from '../services/product.service'
 
 async function getAllProducts(req: Request, res: Response, next: NextFunction) {
   const {

@@ -3,14 +3,14 @@ import _ from 'lodash'
 import crypto from 'crypto'
 import bcrypt from 'bcrypt'
 
-import User from '@models/user.model'
-import ResetTokenModel from '@models/resetToken.model'
-import HttpException from '@utils/HttpException'
-import UserService from '@services/user.service'
-import { IUser, IUserMongoDoc } from '@interfaces/user.interface'
-import { IResetToken } from '@interfaces/resetToken.interface'
-import ResetTokenService from '@services/resetToken.service'
-import { ACCESS_TOKEN_SECRET, BASE_URL, NODE_ENV } from '@/config/env.config'
+import User from '../models/user.model'
+import ResetTokenModel from '../models/resetToken.model'
+import HttpException from '../utils/HttpException'
+import UserService from './user.service'
+import { IUser, IUserMongoDoc } from '../interfaces/user.interface'
+import { IResetToken } from '../interfaces/resetToken.interface'
+import ResetTokenService from './resetToken.service'
+import { ACCESS_TOKEN_SECRET, BASE_URL, NODE_ENV } from '../config/env.config'
 
 function signTokenPayload(user: IUser) {
   const body = { userId: user._id }

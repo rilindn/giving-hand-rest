@@ -1,9 +1,9 @@
 import {
   IResetTokenPayload,
   IResetTokenSearch,
-} from '@interfaces/resetToken.interface'
-import ResetTokenModel from '@models/resetToken.model'
-import HttpException from '@utils/HttpException'
+} from '../interfaces/resetToken.interface'
+import ResetTokenModel from '../models/resetToken.model'
+import HttpException from '../utils/HttpException'
 
 async function findToken(params: IResetTokenSearch) {
   try {

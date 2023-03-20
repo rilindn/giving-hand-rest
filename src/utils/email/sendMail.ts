@@ -1,11 +1,11 @@
 import path from 'path'
 import hbs from 'nodemailer-express-handlebars'
-import { IUser } from '@interfaces/user.interface'
+import { IUser } from '../../interfaces/user.interface'
 import {
   GmailTransporter,
   MailOptions,
-} from '@interfaces/mailTransporter.interface'
-import { GMAIL_EMAIL_USER } from '@/config/env.config'
+} from '../../interfaces/mailTransporter.interface'
+import { GMAIL_EMAIL_USER } from '../../config/env.config'
 import createTransporter from './mailTransporter'
 
 const constructTransporter: (

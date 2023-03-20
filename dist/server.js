@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const express_1 = tslib_1.__importDefault(require("express"));
-const cors_1 = tslib_1.__importDefault(require("cors"));
 const morgan_1 = tslib_1.__importDefault(require("morgan"));
 const http_errors_1 = tslib_1.__importDefault(require("http-errors"));
 const passport_1 = tslib_1.__importDefault(require("passport"));
@@ -40,20 +39,19 @@ const app = (0, express_1.default)();
 //   next()
 // })
 // =========
-const whitelist = ['http://localhost:3000', 'http://example2.com'];
-// ✅ Enable pre-flight requests
-app.options('*', (0, cors_1.default)());
-const corsOptions = {
-    origin: (origin, callback) => {
-        if (whitelist.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
-        }
-        else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-};
-app.use((0, cors_1.default)(corsOptions));
+// const whitelist = ['http://localhost:3000', 'http://example2.com']
+// // ✅ Enable pre-flight requests
+// app.options('*', cors())
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   },
+// }
+// app.use(cors(corsOptions))
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.json());
 // const corsOptions = {

@@ -1,4 +1,4 @@
-import { IUser } from '@interfaces/user.interface'
+import { IUser } from './user.interface'
 
 interface Images {
   url: string

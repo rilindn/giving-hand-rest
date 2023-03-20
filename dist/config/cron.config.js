@@ -4,8 +4,8 @@ const tslib_1 = require("tslib");
 const http_errors_1 = tslib_1.__importDefault(require("http-errors"));
 const node_cron_1 = tslib_1.__importDefault(require("node-cron"));
 const os_1 = tslib_1.__importDefault(require("os"));
-const logger_1 = require("@/utils/logger");
-const resetToken_service_1 = tslib_1.__importDefault(require("@/services/resetToken.service"));
+const logger_1 = require("../utils/logger");
+const resetToken_service_1 = tslib_1.__importDefault(require("../services/resetToken.service"));
 const env_config_1 = require("./env.config");
 function initializeCronJobs() {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateProductValidation = exports.createProductValidation = void 0;
 const tslib_1 = require("tslib");
 const joi_1 = tslib_1.__importDefault(require("joi"));
-const validator_middleware_1 = tslib_1.__importDefault(require("@middleware/validator.middleware"));
+const validator_middleware_1 = tslib_1.__importDefault(require("../middleware/validator.middleware"));
 const registerSchema = joi_1.default.object({
     title: joi_1.default.string().required().label('Title'),
     description: joi_1.default.string().required().label('Description'),

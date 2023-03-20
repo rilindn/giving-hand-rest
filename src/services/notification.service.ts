@@ -1,7 +1,7 @@
-import HttpException from '@utils/HttpException'
-import Notification from '@models/notification.model'
-import { INotificationPayload } from '@interfaces/notification.interface'
 import mongoose from 'mongoose'
+import HttpException from '../utils/HttpException'
+import Notification from '../models/notification.model'
+import { INotificationPayload } from '../interfaces/notification.interface'
 
 async function getNotifications(receiverId: string) {
   try {

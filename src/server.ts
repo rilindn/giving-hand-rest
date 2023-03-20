@@ -42,22 +42,22 @@ const app: Application = express()
 // })
 
 // =========
-const whitelist = ['http://localhost:3000', 'http://example2.com']
+// const whitelist = ['http://localhost:3000', 'http://example2.com']
 
-// ✅ Enable pre-flight requests
-app.options('*', cors())
+// // ✅ Enable pre-flight requests
+// app.options('*', cors())
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  },
-}
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   },
+// }
 
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 
 app.use(express.urlencoded({ extended: true }))
 

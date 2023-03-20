@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { AuthRequest } from '@/@types/index';
+import { AuthRequest } from '../@types/index';
 declare function login(req: Request, res: Response, next: NextFunction): Promise<void>;
 declare function registerUser(req: Request, res: Response, next: NextFunction): Promise<Response<any, Record<string, any>>>;
 declare function loggedUser(req: AuthRequest, res: Response, next: NextFunction): Promise<Response<any, Record<string, any>>>;

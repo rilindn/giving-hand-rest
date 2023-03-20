@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import { IUser } from '@interfaces/user.interface';
-import { IResetToken } from '@interfaces/resetToken.interface';
+import { IUser } from '../interfaces/user.interface';
+import { IResetToken } from '../interfaces/resetToken.interface';
 declare function signTokenPayload(user: IUser): {
     token: string;
     user: _.Omit<IUser, "password">;

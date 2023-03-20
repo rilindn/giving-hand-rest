@@ -1,5 +1,5 @@
 import { Schema, Document, model } from 'mongoose'
-import { IResetToken } from '@interfaces/resetToken.interface'
+import { IResetToken } from '../interfaces/resetToken.interface'
 
 const ResetTokenSchema = new Schema(
   {

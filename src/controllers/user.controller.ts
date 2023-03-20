@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
-import { IUser, IUserGetParams } from '@interfaces/user.interface'
-import UserService from '@services/user.service'
+import { IUser, IUserGetParams } from '../interfaces/user.interface'
+import UserService from '../services/user.service'
 
 async function getAllUsers(req: Request, res: Response, next: NextFunction) {
   try {

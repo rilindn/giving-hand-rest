@@ -1,6 +1,6 @@
 import { ErrorRequestHandler, NextFunction, Request, Response } from 'express'
-import { logger } from '@utils/logger'
-import HttpException from '@utils/HttpException'
+import HttpException from '../utils/HttpException'
+import { logger } from '../utils/logger'
 
 const errorHandler: ErrorRequestHandler = (
   error: HttpException,

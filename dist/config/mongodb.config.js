@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const mongoose_1 = tslib_1.__importDefault(require("mongoose"));
-const logger_1 = require("@utils/logger");
 const http_errors_1 = tslib_1.__importDefault(require("http-errors"));
+const logger_1 = require("../utils/logger");
 const env_config_1 = require("./env.config");
 function initializeMongo() {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {

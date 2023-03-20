@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document, model } from 'mongoose'
-import { IProductRequest } from '@interfaces/productRequest.interface'
+import { IProductRequest } from '../interfaces/productRequest.interface'
 
 const ProductRequestSchema = new Schema(
   {

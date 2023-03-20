@@ -1,13 +1,14 @@
-import HttpException from '@utils/HttpException'
-import Product from '@models/product.model'
+import mongoose from 'mongoose'
+import _ from 'lodash'
+import HttpException from '../utils/HttpException'
+import Product from '../models/product.model'
 import {
   IAllProductQuery,
   IProduct,
   IProductPayload,
-} from '@interfaces/product.interface'
-import mongoose from 'mongoose'
-import _ from 'lodash'
-import ProductRequestService from '@services/productRequest.service'
+} from '../interfaces/product.interface'
+// eslint-disable-next-line import/no-cycle
+import ProductRequestService from './productRequest.service'
 
 async function getProducts({
   search,

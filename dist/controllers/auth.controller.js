@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
 const passport_1 = tslib_1.__importDefault(require("passport"));
-const user_service_1 = tslib_1.__importDefault(require("@services/user.service"));
-const auth_service_1 = tslib_1.__importDefault(require("@services/auth.service"));
-const resetToken_service_1 = tslib_1.__importDefault(require("@services/resetToken.service"));
-const sendMail_1 = tslib_1.__importDefault(require("@utils/email/sendMail"));
+const user_service_1 = tslib_1.__importDefault(require("../services/user.service"));
+const auth_service_1 = tslib_1.__importDefault(require("../services/auth.service"));
+const resetToken_service_1 = tslib_1.__importDefault(require("../services/resetToken.service"));
+const sendMail_1 = tslib_1.__importDefault(require("../utils/email/sendMail"));
 function login(req, res, next) {
     return tslib_1.__awaiter(this, void 0, void 0, function* () {
         passport_1.default.authenticate('local', (err, user) => tslib_1.__awaiter(this, void 0, void 0, function* () {

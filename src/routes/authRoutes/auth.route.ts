@@ -1,9 +1,9 @@
 import express from 'express'
-import AuthController from '@controllers/auth.controller'
+import AuthController from '../../controllers/auth.controller'
 import {
   registerUserValidation,
   resetPasswordValidation,
-} from '@validators/user.validation'
+} from '../../validators/user.validation'
 
 const UserRouter = express.Router()
 

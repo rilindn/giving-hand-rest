@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 
-import ChatService from '@services/chat.service'
-import { IChat } from '@interfaces/chat.interface'
+import ChatService from '../services/chat.service'
+import { IChat } from '../interfaces/chat.interface'
 
 async function getMyChats(req: Request, res: Response, next: NextFunction) {
   const { id } = req.params
