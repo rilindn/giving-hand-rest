@@ -1,10 +1,1 @@
-{
-  "version": 3,
-  "file": "productRequest.interface.js",
-  "sourceRoot": "",
-  "sources": [
-    "../../interfaces/productRequest.interface.ts"
-  ],
-  "names": [],
-  "mappings": ""
-}
+{"version":3,"file":"productRequest.interface.js","sourceRoot":"","sources":["../../src/interfaces/productRequest.interface.ts"],"names":[],"mappings":""}
