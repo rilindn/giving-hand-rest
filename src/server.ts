@@ -79,7 +79,7 @@ app.use(express.json())
 //   },
 //   credentials: true,
 // }
-// app.use(cors(corsOptions))
+app.use(cors())
 
 app.use(morgan('dev', { stream }))
 
