@@ -19,6 +19,32 @@ import './config/index.config'
 const app: Application = express()
 
 // app.use((req, res, next) => {
+//   console.log('first22', req.method)
+
+//   if (req.method === 'OPTIONS') {
+//     console.log('first', req.method)
+//     const headers = {}
+//     headers['Access-Control-Allow-Origin'] = '*'
+//     headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
+//     headers['Access-Control-Allow-Credentials'] = false
+//     headers['Access-Control-Max-Age'] = '86400' // 24 hours
+//     headers['Access-Control-Allow-Headers'] =
+//       'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept'
+//     res.writeHead(200, headers)
+//     res.end()
+//   } else {
+//     console.log('first', req.method)
+//     res.header('Access-Control-Allow-Origin', '*')
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+//     res.header(
+//       'Access-Control-Allow-Headers',
+//       'Origin, X-Requested-With, Content-Type, Accept',
+//     )
+//     next()
+//   }
+// })
+
+// app.use((req, res, next) => {
 //   res.set('Access-Control-Allow-Origin', 'http://localhost:3000')
 //   res.set('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT')
 //   res.set(
@@ -80,7 +106,58 @@ app.use(express.json())
 //   },
 //   credentials: true,
 // }
+// console.log('first')
+
+// app.use(
+//   cors({
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     origin: 'http://localhost:3000',
+//     optionsSuccessStatus: 200,
+//     credentials: true,
+//   }),
+// )
+
+// const corsOptions = {
+//   origin: true,
+//   credentials: true,
+// }
+// app.options('*', cors(corsOptions))
+
+app.options('/*', (_, res) => {
+  res.sendStatus(200)
+})
+
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'http://localhost:3000') // update to match the domain you will make the request from
+//   res.header(
+//     'Access-Control-Allow-Headers',
+//     'Origin, X-Requested-With, Content-Type, Accept',
+//   )
+//   next()
+// })
+
 app.use(cors())
+// console.log('first')
+
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
+//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+//   res.header('Access-Control-Allow-Headers', 'Content-Type')
+//   next()
+// })
+
+// app.options('/*', (_, res) => {
+//   console.log('res', res)
+//   return res.sendStatus(200)
+// })
+
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*')
+//   res.header('Access-Control-Allow-Headers', '*')
+//   console.log('first', req)
+//   console.log('res', res)
+//   next()
+// })
 
 app.use(morgan('dev', { stream }))
 
