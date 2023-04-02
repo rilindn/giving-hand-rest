@@ -127,7 +127,7 @@ app.options('/*', (_, res) => {
   res.header('Access-Control-Allow-Origin', 'https://givinghand.netlify.app')
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
   res.header('Access-Control-Allow-Headers', 'Content-Type')
-  res.sendStatus(200)
+  return res.sendStatus(200)
 })
 
 // app.use((req, res, next) => {
