@@ -63,7 +63,8 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(express.json())
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://givinghand.netlify.app'],
+  // origin: ['http://localhost:3000', 'https://givinghand.netlify.app'],
+  origin: '*',
   credentials: true, // access-control-allow-credentials:true
   optionSuccessStatus: 200,
 }
