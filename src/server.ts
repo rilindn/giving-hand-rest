@@ -62,12 +62,12 @@ const app: Application = express()
 app.use(express.urlencoded({ extended: true }))
 
 app.use(express.json())
-const corsOptions = {
-  // origin: ['http://localhost:3000', 'https://givinghand.netlify.app'],
-  origin: '*',
-  credentials: true, // access-control-allow-credentials:true
-  optionSuccessStatus: 200,
-}
+// const corsOptions = {
+//   // origin: ['http://localhost:3000', 'https://givinghand.netlify.app'],
+//   origin: '*',
+//   credentials: true, // access-control-allow-credentials:true
+//   optionSuccessStatus: 200,
+// }
 // app.use(cors(corsOptions))
 // const whitelist = ['http://localhost:3000']
 // const corsOptions = {
@@ -80,7 +80,7 @@ const corsOptions = {
 //   },
 //   credentials: true,
 // }
-app.use(cors(corsOptions))
+app.use(cors())
 
 app.use(morgan('dev', { stream }))
 
