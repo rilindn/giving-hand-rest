@@ -18,11 +18,11 @@ const constructTransporter: (
   const options = {
     viewEngine: {
       extname: '.hbs',
-      layoutsDir: path.resolve('./src/utils/email/template/'),
+      layoutsDir: path.resolve('./template/'),
       defaultLayout: 'resetPassword',
-      partialsDir: path.resolve('./src/utils/email/template/'),
+      partialsDir: path.resolve('./template/'),
     },
-    viewPath: path.resolve('./src/utils/email/template/'),
+    viewPath: path.resolve('./template/'),
     extName: '.hbs',
   }
   const mailOptions: MailOptions = {

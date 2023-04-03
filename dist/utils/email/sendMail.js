@@ -11,11 +11,11 @@ const constructTransporter = (user, magicLink) => tslib_1.__awaiter(void 0, void
     const options = {
         viewEngine: {
             extname: '.hbs',
-            layoutsDir: path_1.default.resolve('./src/utils/email/template/'),
+            layoutsDir: path_1.default.resolve('./template/'),
             defaultLayout: 'resetPassword',
-            partialsDir: path_1.default.resolve('./src/utils/email/template/'),
+            partialsDir: path_1.default.resolve('./template/'),
         },
-        viewPath: path_1.default.resolve('./src/utils/email/template/'),
+        viewPath: path_1.default.resolve('./template/'),
         extName: '.hbs',
     };
     const mailOptions = {
