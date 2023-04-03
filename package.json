@@ -2,9 +2,9 @@
   "name": "giving-hand-rest",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "tsc && node dist/server.js",
+    "start": "tsc && node dist/index.js",
     "watch": "nodemon",
     "build": "tsc",
     "lint": "eslint . --ext .ts",
