@@ -7,7 +7,7 @@
       "config": { "includeFiles": ["dist/**"] }
     }
   ],
-  "cleanUrls": true,
+  "rewrites": [{ "source": "/(.*)", "destination": "dist/server.js" }],
   "headers": [
     {
       "source": "/(.*)",
